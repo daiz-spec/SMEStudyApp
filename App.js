@@ -39,6 +39,18 @@ class ErrorBoundary extends React.Component {
 }
 
 export default function App() {
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return (
+      <View style={{ flex: 1, backgroundColor: '#0D1117' }} />
+    );
+  }
+
   return (
     <SafeAreaProvider>
       <ErrorBoundary>
